@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <title>Loading Screen - Epic Template V2</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://officialyu.me/fontawesome/css/all.min.css" />
+
+    <img id="cursor" src="img/cursor.png" />
+    <style>
+        #cursor {
+            width: 25px;
+            height: 25px;
+            position: fixed;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<script>
+
+window.onload = function() {
+    document.body.addEventListener("mousemove", function(event) {
+        var x = event.pageX - 1 + "px"
+        var y = event.pageY + 1 + "px"
+        document.getElementById("cursor").style.left = x;
+        document.getElementById("cursor").style.top = y;
+    })
+};
+</script>
+<body style="overflow: hidden;cursor:none">
+
+    <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=DAQYMyzE8ww',containment:'body',autoPlay:true, mute:false, startAt:0, stopAt:0, opacity:1}"></a>
+    <div id="loading">
+        <div id="preloader">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="global-overlay">
+        <div class="overlay">
+            <div class="overlay-dash"></div>
+        </div>
+    </div>
+    <section id="home-wrap">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+        <div class="content">
+            <img src="img/logo.png" alt="" class="brand-logo text-intro opacity-0" />
+            <h1 class="text-intro opacity-0"><span class="polyfy-title">WIND STUDIO</span></h1>
+            <p class="text-intro opacity-0">Base Template</p>
+        </div>
+    </section>
+
+
+    <div class="command-info-wrap"><button class="to-close"><i class="icon ion-close-round"></i></button></div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.easings.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/velocity.min.js"></script>
+	<script src="js/velocity.ui.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/main-youtube.js"></script>
+	<script src="js/jquery.mb.YTPlayer.js"></script>
+	<script src="js/photoswipe-ui-default.js"></script>
+</body>
+
+</html>

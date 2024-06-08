@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haroki Status</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body class="flex-1 h-screen w-full font-roboto">
+    <div class="main-section flex flex-col flex-wrap h-screen w-full justify-start items-end text-white">
+        <div class="status-container flex justify-center flex-col flex-wrap mt-5 mr-5 py-5 rounded-lg w-64 bg-main-bg">
+            <ul class="block space-y-5">
+                <li class="flex justify-center items-center">
+                    <i class="far fa-heart text-3xl"></i>
+                    <span id="hp-text" class="ml-5 mr-3 text-1xl font-bold">100</span>
+                    <div class="relative w-full h-2 sm:w-1/2 bg-black bg-opacity-40 rounded">
+                        <div id="hp-bar" class="relative h-2 rounded bg-hp-main"></div>
+                      </div>
+                </li>
+                <li class="flex justify-center items-center" id="ar">
+                    <i class="fas fa-shield-alt text-3xl"></i>
+                    <span id="ar-text" class="ml-5 mr-3 text-1xl font-bold">100</span>
+                    <div class="relative w-full h-2 sm:w-1/2 bg-black bg-opacity-40 rounded">
+                        <div id="ar-bar" class="relative h-2 rounded bg-ar-main"></div>
+                      </div>
+                </li>
+            </ul>
+        </div>
+        <div class="info-container flex justify-center flex-col flex-wrap mt-2 mr-5 py-3 rounded-lg w-64 bg-main-bg">
+            <ul class="flex justify-around">
+                <li class="flex justify-center items-center">
+                    <i class="fas fa-hamburger text-hg-main"></i>
+                    <span id="hg-text" class="ml-2"></span>
+                </li>
+                <li class="flex justify-center items-center">
+                    <i class="fas fa-tint text-th-main"></i>
+                    <span id="th-text" class="ml-2"></span>
+                </li>
+                <li class="flex justify-center items-center">
+                    <i class="fas fa-users text-indigo-400"></i>
+                    <span id="plcount" class="ml-2">32/64</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="app.js"></script>
+</html>

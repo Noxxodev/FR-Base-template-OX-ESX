@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SInteriorOrderData>
+	<startFrom value="2727" />
+	<proxies>
+		<!-- Unknown -->
+		<Item>capozzo_automotive_distantlights</Item>
+		<Item>capozzo_automotive_lodlights</Item>
+		<Item>capozzo_esterni_decor</Item>
+		<Item>ch1_occl_01</Item>
+		<Item>hei_ch1_01</Item>
+		<Item>hei_ch1_01_critical_1</Item>
+		<Item>hei_ch1_01_long_9</Item>
+		<Item>hei_ch1_01_strm_7</Item>
+		<Item>hei_sm_occl_01</Item>
+		<Item>moto91_concessionario_milo_</Item>
+		<Item>moto_capozzo_luci</Item>
+	</proxies>
+</SInteriorOrderData>
