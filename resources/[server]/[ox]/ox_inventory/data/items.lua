@@ -508,19 +508,16 @@ return {
 		}
 	},
 
-	['carteidentite'] = {
-		label = 'Carte d\'identité',
-		weight = 80,
+	['id_card'] = {
+		label = 'Carte identiter',
 	},
 
-	['ppa'] = {
-		label = 'Permis de port d\'armes',
-		weight = 80,
-	},
-
-	['drive'] = {
+	['license_drive'] = {
 		label = 'Permis de conduire',
-		weight = 80,
+	},
+
+	['license_weapon'] = {
+		label = 'Permis darmes',
 	},
 
 	["jeton"] = {
@@ -614,7 +611,6 @@ return {
 
 
 
-		-- OLIANN
 	
 ['burger2'] = {
     label = 'Hamburger',

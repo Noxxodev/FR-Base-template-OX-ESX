@@ -106,3 +106,54 @@ Config.posvehicule = {
         nombre = 2,
     },
 }
+
+---------------------------------------------------------------------------------------------------
+-- Job center 
+
+Config.Target = 'ox_target'
+
+Config.Blipsss = {
+	Text = 'Job center',
+	Sprite = 498,
+	Size = 0.5,
+	Color = 26,
+	Display = 4
+}
+
+Config.Locations = {
+	{
+		Ped = `a_f_y_business_01`,
+		Coords = vector4(-364.430756, -249.283508, 36.070312, 420.4116),
+	}
+}
+
+--Optional fontawesome icons for jobs.
+Config.JobIcons = {
+	['unemployed'] = 'fa-solid fa-user',
+	['taxi'] = 'fa-solid fa-taxi',
+	['trucker'] = 'fa-solid fa-truck',
+}
+
+Config.Licenses = {
+	{
+		Item = 'id_card',
+		Label = 'Carte identité',
+		Icon = 'fa-solid fa-id-card',
+		LicenseNeeded = false, --['license'/false] verify license ownership through esx_license
+		Price = 25
+	},
+	{
+		Item = 'license_drive',
+		Label = 'Permis de conduire',
+		Icon = 'fa-solid fa-car',
+		LicenseNeeded = 'dmv', --['license'/false] verify license ownership through esx_license
+		Price = 50
+	},
+	{
+		Item = 'license_weapon',
+		Label = 'Permis d\'arme',
+		Icon = 'fa-solid fa-gun',
+		LicenseNeeded = 'weapon', --['license'/false] verify license ownership through esx_license
+		Price = 75
+	},
+}
