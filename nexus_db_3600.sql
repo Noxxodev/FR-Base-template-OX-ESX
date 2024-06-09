@@ -853,12 +853,6 @@ ALTER TABLE `player_outfit_codes`
   ADD KEY `FK_player_outfit_codes_player_outfits` (`outfitid`);
 
 --
--- Index pour la table `rented_vehicles`
---
-ALTER TABLE `rented_vehicles`
-  ADD PRIMARY KEY (`plate`);
-
---
 -- Index pour la table `reports`
 --
 ALTER TABLE `reports`
