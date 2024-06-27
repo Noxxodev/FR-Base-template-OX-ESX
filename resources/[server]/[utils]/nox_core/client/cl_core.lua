@@ -254,22 +254,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-
-
-
--- RETIER DROP ARMES PNJ A TERRE
-
-Citizen.CreateThread(function()
-    while true do
-      Citizen.Wait(1)
-      -- List of pickup hashes (https://pastebin.com/8EuSv2r1)
-      RemoveAllPickupsOfType(0xDF711959) -- carbine rifle
-      RemoveAllPickupsOfType(0xF9AFB48F) -- pistol
-      RemoveAllPickupsOfType(0xA9355DCD) -- pumpshotgun
-    end
-  end)
-
   
 
 -- RAGDOLL
@@ -333,16 +317,16 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('epic_ragdoll:toggle')
-AddEventHandler('epic_ragdoll:toggle', function()
+RegisterNetEvent('nox_ragdoll:toggle')
+AddEventHandler('nox_ragdoll:toggle', function()
     ragdoll = not ragdoll
     if not ragdoll then
         shownHelp = false
     end
 end)
 
-RegisterNetEvent('epic_ragdoll:set')
-AddEventHandler('epic_ragdoll:set', function(value)
+RegisterNetEvent('nox_ragdoll:set')
+AddEventHandler('nox_ragdoll:set', function(value)
     ragdoll = value
     if not ragdoll then
         shownHelp = false
@@ -425,47 +409,6 @@ end)
 
 function Bool (num) return num == 1 or num == true end
 
--- WEAPON DROP OFFSETS
-local function GetDisarmOffsetsForPed (ped)
-	local v
-
-	if IsPedWalking(ped) then v = { 0.6, 4.7, -0.1 }
-	elseif IsPedSprinting(ped) then v = { 0.6, 5.7, -0.1 }
-	elseif IsPedRunning(ped) then v = { 0.6, 4.7, -0.1 }
-	else v = { 0.4, 4.7, -0.1 } end
-
-	return v
-end
-
-function Disarm (ped)
-	if IsEntityDead(ped) then return false end
-
-	local boneCoords
-	local hit, bone = GetPedLastDamageBone(ped)
-
-	hit = Bool(hit)
-
-	if hit then
-		if BONES[bone] then
-			
-
-			boneCoords = GetWorldPositionOfEntityBone(ped, GetPedBoneIndex(ped, bone))
-			SetPedToRagdoll(GetPlayerPed(-1), 5000, 5000, 0, 0, 0, 0)
-			
-
-			return true
-		end
-	end
-
-	return false
-end
-
--- Désactiver les sons ambiants - Scanner Police, Bruits de tir à l'ammunation
-
-Citizen.CreateThread(function()
-    StartAudioScene('CHARACTER_CHANGE_IN_SKY_SCENE')
-    SetAudioFlag("PoliceScannerDisabled", true)
-end)
 
     
 -- Argent gta online retiré
