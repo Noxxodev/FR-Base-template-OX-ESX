@@ -366,50 +366,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-
-
-
-
--- TOMBER QUAND ON SE FAIT TOUCHER DANS LA JAMBE
-local BONES = {
-	--[[Pelvis]][11816] = true,
-	--[[SKEL_L_Thigh]][58271] = true,
-	--[[SKEL_L_Calf]][63931] = true,
-	--[[SKEL_L_Foot]][14201] = true,
-	--[[SKEL_L_Toe0]][2108] = true,
-	--[[IK_L_Foot]][65245] = true,
-	--[[PH_L_Foot]][57717] = true,
-	--[[MH_L_Knee]][46078] = true,
-	--[[SKEL_R_Thigh]][51826] = true,
-	--[[SKEL_R_Calf]][36864] = true,
-	--[[SKEL_R_Foot]][52301] = true,
-	--[[SKEL_R_Toe0]][20781] = true,
-	--[[IK_R_Foot]][35502] = true,
-	--[[PH_R_Foot]][24806] = true,
-	--[[MH_R_Knee]][16335] = true,
-	--[[RB_L_ThighRoll]][23639] = true,
-	--[[RB_R_ThighRoll]][6442] = true,
-}
-
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		local ped = GetPlayerPed(-1)
-			--if IsShockingEventInSphere(102, 235.497,2894.511,43.339,999999.0) then
-			if HasEntityBeenDamagedByAnyPed(ped) then
-			--if GetPedLastDamageBone(ped) = 
-					Disarm(ped)
-			end
-			ClearEntityLastDamageEntity(ped)
-	 end
-end)
-
-
-
-function Bool (num) return num == 1 or num == true end
-
-
     
 -- Argent gta online retiré
 
