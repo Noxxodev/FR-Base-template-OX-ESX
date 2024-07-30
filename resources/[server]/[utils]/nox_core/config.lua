@@ -111,6 +111,7 @@ Config.posvehicule = {
 -- Job center 
 
 Config.Target = 'ox_target'
+Config.notif = 1 -- 1 = Ox Notification | 2 = ESX Notification
 
 Config.Blipsss = {
 	Text = 'Job center',
