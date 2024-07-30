@@ -55,7 +55,6 @@ CreateThread(function()
         }
     })
     lib.callback('om_jobcentre:getJobs', 0, function(jobs)
-        --Make sure unemployed is first
         local options = { 
             { 
                 title = 'Unemployed',
@@ -63,38 +62,20 @@ CreateThread(function()
                 onSelect = function()
                     local closest, index = GetClosest()
                     TriggerServerEvent('om_jobcentre:hired', index, 'unemployed')
-                    ShowNotification("Vous vous êtes retirer de votre job", 'inform')
+                    if Config.notif == 1 then
+                        ESX.ShowNotification('Vous vous êtes retirer de votre job')
+                    end
+                    if Config.notif == 2 then
+                        lib.notify({
+                            title = 'Job Center',
+                            description = "Vous vous êtes retirer de votre job",
+                            type = 'inform',
+                            duration = 10000,
+                        })
+                    end
                 end
             } 
         }
-        for k,v in pairs(jobs) do
-            if not v.whitelisted and k ~= 'unemployed' then
-                --[[table.insert(options, {
-                    title = v.label,
-                    icon = Config.JobIcons[k],
-                    onSelect = function()
-                        CreateThread(function()
-                            local closest, index = GetClosest()
-                            lib.requestAnimDict('missfbi3_party_d')
-                            TaskPlayAnim(PlayerPedId(), 'missfbi3_party_d', 'stand_talk_loop_a_male2', 2.0, 1.0, 6500, 16)
-                            TaskPlayAnim(closest, 'missfbi3_party_d', 'stand_talk_loop_a_male1', 2.0, 1.0, 5500, 16)
-                            lib.progressBar({
-                                duration = 5000,
-                                label = "Vous parler ...",
-                                useWhileDead = false,
-                                canCancel = false,
-                                disable = {
-                                    car = true,
-                                },
-                            })
-                            Wait(1000)
-                            ShowNotification("Vous avez etez rectuter", 'success')
-                            TriggerServerEvent('om_jobcentre:hired', index, k)
-                        end)
-                    end
-                })]]
-            end
-        end
         lib.registerContext({
             id = 'job_centre:jobs',
             title = "Liste des jobs",
@@ -130,9 +111,29 @@ CreateThread(function()
                         Wait(2000)
                         TaskPlayAnim(closest, 'mp_common', 'givetake1_a', 2.0, 1.0, 2000, 16)
                         Wait(1500)
-                        ShowNotification("Vous avez acheté une license", 'success')
+                        if Config.notif == 1 then
+                            ESX.ShowNotification('Vous avez acheté une license')
+                        end
+                        if Config.notif == 2 then
+                            lib.notify({
+                                title = 'Job Center',
+                                description = "Vous avez acheté une license",
+                                type = 'success',
+                                duration = 10000,
+                            })
+                        end
                     else
-                        ShowNotification(message, 'error')
+                        if Config.notif == 1 then
+                            ESX.ShowNotification(message)
+                        end
+                        if Config.notif == 2 then
+                            lib.notify({
+                                title = 'Job Center',
+                                description = message,
+                                type = 'error',
+                                duration = 10000,
+                            })
+                        end
                     end
                 end, index, k)
             end
