@@ -201,9 +201,6 @@ Citizen.CreateThread(function()
     AddTextEntry('PM_SCR_GAL', '📷')
 end)
 
-
-
-
 -- ENLEVER ROULADE (REALISME)
 
 Citizen.CreateThread(function()
@@ -215,9 +212,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-
-
-
 -- ENLEVER TAPER AVEC R
 Citizen.CreateThread(function()
     while true do
@@ -225,147 +219,6 @@ Citizen.CreateThread(function()
         DisableControlAction(0, 140, true)
     end
 end)
-
-
-
--- ENLEVER LA POLICE PNJ DEVANT LE COMICO
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(375)
-        local myCoords = GetEntityCoords(GetPlayerPed(-1))
-        ClearAreaOfCops(myCoords.x, myCoords.y, myCoords.z, 100.0, 0)
-    end
-end)
-
-Citizen.CreateThread(function()
-    for i = 1, 12 do
-        Citizen.InvokeNative(0xDC0F817884CDD856, i, false)
-    end
-end)
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(300)
-       
-        if GetPlayerWantedLevel(PlayerId()) ~= 0 then
-            SetPlayerWantedLevel(PlayerId(), 0, false)
-            SetPlayerWantedLevelNow(PlayerId(), false)
-        end
-    end
-end)
-  
-
--- RAGDOLL
-
-local ragdoll = false
-local shownHelp = false
-
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        if IsControlJustPressed(2, 82) and not IsPedInAnyVehicle(GetPlayerPed(-1), false) then
-            ragdoll = not ragdoll
-            if not ragdoll then
-                shownHelp = false
-            end
-        end
-        if IsPedBeingStunned(GetPlayerPed(-1)) then
-            ragdoll = true
-        end
-
-      
-        -- Don't ragdoll if player is dead
-        if IsPlayerDead(PlayerId()) and ragdoll == true then
-            ragdoll = false
-            shownHelp = false
-        end
-        if ragdoll == true and not shownHelp then
-
-            lib.showTextUI('Se relever [ ; ]', {
-                position = "top-center",
-                icon = 'heart-pulse',
-                style = {
-                    borderRadius = 50,
-                    backgroundColor = '#007BD0',
-                    color = 'white'
-                }
-            })
-
-            shownHelp = true
-
-
-            Wait(1200)
-            
-
-        Wait(4000)
-
-        lib.hideTextUI()
-
-
-        end
-    end
-end)
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        if ragdoll then
-            SetPedToRagdoll(GetPlayerPed(-1), 1000, 1000, 0, 0, 0, 0)
-        end
-    end
-end)
-
-RegisterNetEvent('nox_ragdoll:toggle')
-AddEventHandler('nox_ragdoll:toggle', function()
-    ragdoll = not ragdoll
-    if not ragdoll then
-        shownHelp = false
-    end
-end)
-
-RegisterNetEvent('nox_ragdoll:set')
-AddEventHandler('nox_ragdoll:set', function(value)
-    ragdoll = value
-    if not ragdoll then
-        shownHelp = false
-    end
-end)
-
-
-
--- VOL DE VEHICULE DE FONCTITON
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(500)
-        local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1), false)
-        local ped = GetPlayerPed(-1)
-        local vehicleClass = GetVehicleClass(vehicle)
-        PlayerData = ESX.GetPlayerData()
-
-        if vehicleClass == 18 and GetPedInVehicleSeat(vehicle, -1) == ped then
-            if IsPedInAnyPoliceVehicle(GetPlayerPed(PlayerId())) then
-                local playerGroup = PlayerData.group
-                if PlayerData.job.name ~= 'police' and PlayerData.job.name ~= 'ambulance' and PlayerData.job.name ~= 'mechanic' and PlayerData.job.name ~= 'avocat' and playerGroup ~= 'user' then
-                    local vehicle = GetVehiclePedIsUsing(GetPlayerPed(PlayerId()), false)
-                    local chance_kick = math.random()
-                    local time = 9000
-                    if chance_kick < 0.7 then
-                        ClearPedTasksImmediately(ped)
-                        TaskLeaveVehicle(ped, vehicle, 0)
-                        print("Le joueur ^1" .. GetPlayerName(PlayerId()) .. "^0 a tenté de ^1voler un véhicule de fonction ^0(LSPD) !")   
-                        ESX.ShowNotification("Le vol de véhicule de fonction est interdit !", "error", 3000)
-                        
-                        ClearPedTasksImmediately(ped)
-                        TaskLeaveVehicle(ped, vehicle, 0)
-                    end
-                end
-            end
-        end
-    end
-end)
-
     
 -- Argent gta online retiré
 
@@ -387,8 +240,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-    
-
 
 -- ID
 
